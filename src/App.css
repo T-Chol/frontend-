@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -34,5 +34,270 @@
   }
   to {
     transform: rotate(360deg);
+  }
+} */
+
+/* .App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.login-form {
+  margin: 20px;
+}
+
+.login-form input {
+  margin: 10px;
+  padding: 10px;
+  width: 200px;
+  border: 1px solid #ccc;
+}
+
+.login-form button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #45a049;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #e53935;
+} */
+
+
+/* General App Layout */
+
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.App-header {
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+/* Header styles */
+header h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-button:hover {
+  background-color: #e53935;
+}
+
+/* MealCard styles */
+.meal-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meal-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.meal-card h3 {
+  font-size: 1.5em;
+  color: #333;
+}
+
+.meal-card p {
+  color: #555;
+  font-size: 0.9em;
+}
+
+.meal-card button {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.meal-card button:hover {
+  background-color: #45a049;
+}
+
+/* MealList styles */
+.meal-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* OrderHistory styles */
+.order-history {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.order-history ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-history li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.order-history li p {
+  margin: 5px 0;
+}
+
+/* SignUp form styles */
+.sign-up-form {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 0 auto;
+}
+
+.sign-up-form h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.sign-up-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sign-up-form label {
+  font-size: 1em;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.sign-up-form input {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.sign-up-form button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.sign-up-form button:hover {
+  background-color: #45a049;
+}
+
+/* Dashboard styles */
+.dashboard {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.dashboard h2 {
+  font-size: 1.8em;
+}
+
+.dashboard a {
+  display: block;
+  background-color: #61dafb;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.dashboard a:hover {
+  background-color: #4da3f3;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .meal-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sign-up-form {
+    width: 90%;
+  }
+
+  .dashboard a {
+    width: 100%;
   }
 }
