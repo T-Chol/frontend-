@@ -94,6 +94,10 @@
 
 /* General App Layout */
 
+/* OLD CSS WAY */
+
+
+
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -300,4 +304,70 @@ header h1 {
   .dashboard a {
     width: 100%;
   }
+}
+
+/* to handle my orderlist */
+
+/* src/App.css */
+.my-orders {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+}
+
+.my-orders h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.order-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.order-item h3 {
+  font-size: 1.5rem;
+}
+
+.order-item p {
+  font-size: 1.1rem;
+}
+
+
+/* With bootstrap */
+/* Custom Navbar Styles */
+.navbar {
+  background-color: #f8f9fa !important; /* Light background for navbar */
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+.nav-link:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.nav-item {
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover {
+  transform: scale(1.1); /* Slightly enlarge when hovering */
+}
+
+
+.navbar .d-flex .btn {
+  transition: transform 0.3s ease;
+}
+
+.navbar .d-flex .btn:hover {
+  transform: scale(1.05); /* Slightly enlarge when hovering */
 }

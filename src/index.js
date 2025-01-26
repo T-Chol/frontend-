@@ -61,6 +61,7 @@ import ReactDOM from 'react-dom/client'; // Use the correct import for React 18
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
+import 'bootstrap/dist/css/bootstrap.min.css'; // Bootstrap importation
 
 const root = ReactDOM.createRoot(document.getElementById('root')); // Using createRoot for React 18
 

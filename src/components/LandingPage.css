@@ -76,7 +76,7 @@
 
 .background-image {
   position: relative;
-  background-image: url('https://example.com/path-to-cafe-image.jpg'); /* Update this with the actual image URL */
+  background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dreamstime.com%2Fphotos-images%2Fyoung-man-drinking-coffee-cafe.html&psig=AOvVaw3ulQpxWoIPYcinAY2xcu_4&ust=1737981009148000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPDjrYeyk4sDFQAAAAAdAAAAABAd); /* Update this with the actual image URL */
   background-size: cover;
   background-position: center;
   height: 100vh;

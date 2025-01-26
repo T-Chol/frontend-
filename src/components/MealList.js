@@ -1,4 +1,4 @@
-// src/components/MealList.js
+// // src/components/MealList.js
 import React from 'react';
 import MealCard from './MealCard';
 
@@ -13,3 +13,4 @@ const MealList = ({ meals }) => {
 };
 
 export default MealList;
+
