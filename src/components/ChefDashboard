@@ -1,0 +1,117 @@
+import React, { useState } from 'react';
+
+function ChefDashboard({ handleAddFood, handleSetSpecialOfTheDay, foods }) {
+  const [newFood, setNewFood] = useState({
+    name: '',
+    description: '',
+    ingredients: '',
+    price: '',
+  });
+  const [selectedSpecial, setSelectedSpecial] = useState('');
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewFood({
+      ...newFood,
+      [name]: value,
+    });
+  };
+
+  const handleFoodSubmit = (e) => {
+    e.preventDefault();
+    const food = { ...newFood, id: Date.now() }; // Use a unique ID (timestamp for simplicity)
+    handleAddFood(food); // Pass the food data to the parent component (App.js)
+    setNewFood({
+      name: '',
+      description: '',
+      ingredients: '',
+      price: '',
+    });
+  };
+
+  const handleSpecialSubmit = (e) => {
+    e.preventDefault();
+    handleSetSpecialOfTheDay(selectedSpecial); // Pass the selected food ID to set it as special of the day
+  };
+
+  return (
+    <div className="container mt-4">
+      <h2>Chef's Dashboard</h2>
+
+      {/* Add Food Form */}
+      <h3>Add a New Food Item</h3>
+      <form onSubmit={handleFoodSubmit}>
+        <div className="mb-3">
+          <label className="form-label">Food Name</label>
+          <input
+            type="text"
+            className="form-control"
+            name="name"
+            value={newFood.name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Description</label>
+          <textarea
+            className="form-control"
+            name="description"
+            value={newFood.description}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Ingredients</label>
+          <textarea
+            className="form-control"
+            name="ingredients"
+            value={newFood.ingredients}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Price</label>
+          <input
+            type="text"
+            className="form-control"
+            name="price"
+            value={newFood.price}
+            onChange={handleInputChange}
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Add Food
+        </button>
+      </form>
+
+      {/* Select Special of the Day */}
+      <h3>Select the Special of the Day</h3>
+      <form onSubmit={handleSpecialSubmit}>
+        <select
+          className="form-select"
+          onChange={(e) => setSelectedSpecial(e.target.value)}
+        >
+          <option value="">Select Food</option>
+          {foods.map((food) => (
+            <option key={food.id} value={food.id}>
+              {food.name}
+            </option>
+          ))}
+        </select>
+        <button type="submit" className="btn btn-success mt-3" disabled={!selectedSpecial}>
+          Set as Special
+        </button>
+      </form>
+
+      {/* Display Today's Special */}
+      {specialOfTheDay && (
+        <div className="mt-4">
+          <h4>Today's Special:</h4>
+          {specialOfTheDay.name}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default ChefDashboard;
