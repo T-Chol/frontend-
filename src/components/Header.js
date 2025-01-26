@@ -317,6 +317,8 @@
 // WITH MENU API
 
 // src/components/Header.js
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -344,6 +346,9 @@ function Header({ handleLogout, isLoggedIn }) {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/career">Career</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/Today's Specials">Career</Link>
             </li>
           </ul>
           {/* Move the Sign Up and Log In buttons to the far right */}
