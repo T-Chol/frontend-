@@ -120,6 +120,69 @@
 
 
 
+// import React, { useState } from 'react';
+// import './App.css';
+// import Header from './components/Header';
+// import Login from './components/Login';
+// import SignUp from './components/SignUp';
+// import Dashboard from './components/Dashboard';
+// import MealList from './components/MealList';
+// import OrderHistory from './components/OrderHistory';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// function App() {
+//   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login status
+//   const [user, setUser] = useState(null); // Initialize as null, which will be set after login
+//   const [meals, setMeals] = useState([
+//     { id: 1, name: 'Beef with Rice', description: 'Delicious beef with steamed rice.', price: 10 },
+//     { id: 2, name: 'Chicken with Fries', description: 'Crispy chicken with fries.', price: 8 },
+//   ]);
+//   const [orders, setOrders] = useState([
+//     { mealName: 'Beef with Rice', quantity: 2, status: 'Delivered' },
+//   ]);
+
+//   const handleLogin = (userInfo) => {
+//     setIsLoggedIn(true);
+//     setUser(userInfo); // Set the user state after login
+//   };
+
+//   const handleLogout = () => {
+//     setIsLoggedIn(false);
+//     setUser(null); // Reset user state when logging out
+//   };
+
+//   const handleSignUp = (newUser) => {
+//     setIsLoggedIn(true);
+//     setUser({ ...newUser, role: 'user' }); // Simulate a new user signup
+//   };
+
+//   return (
+//     <Router>
+//       <div className="App">
+//         <Header handleLogout={handleLogout} isLoggedIn={isLoggedIn} />
+//         <Routes>
+//           <Route
+//             path="/"
+//             element={isLoggedIn ? <Dashboard user={user} /> : <Login handleLogin={handleLogin} />}
+//           />
+//           <Route path="/signup" element={<SignUp handleSignUp={handleSignUp} />} />
+//           <Route path="/meal-list" element={<MealList meals={meals} />} />
+//           <Route path="/order-history" element={<OrderHistory orders={orders} />} />
+//         </Routes>
+//       </div>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+
+// TO HANDLE THE LANDING PAGE 
+
+
+
+
+
 import React, { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
@@ -128,7 +191,8 @@ import SignUp from './components/SignUp';
 import Dashboard from './components/Dashboard';
 import MealList from './components/MealList';
 import OrderHistory from './components/OrderHistory';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './components/LandingPage'; // Import LandingPage component
+import { Routes, Route } from 'react-router-dom'; // No need for BrowserRouter here
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login status
@@ -157,21 +221,23 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <Header handleLogout={handleLogout} isLoggedIn={isLoggedIn} />
-        <Routes>
-          <Route
-            path="/"
-            element={isLoggedIn ? <Dashboard user={user} /> : <Login handleLogin={handleLogin} />}
-          />
-          <Route path="/signup" element={<SignUp handleSignUp={handleSignUp} />} />
-          <Route path="/meal-list" element={<MealList meals={meals} />} />
-          <Route path="/order-history" element={<OrderHistory orders={orders} />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="App">
+      <Header handleLogout={handleLogout} isLoggedIn={isLoggedIn} />
+      <Routes>
+        <Route
+          path="/"
+          element={isLoggedIn ? <Dashboard user={user} /> : <LandingPage />}
+        />
+        <Route path="/signup" element={<SignUp handleSignUp={handleSignUp} />} />
+        <Route path="/meal-list" element={<MealList meals={meals} />} />
+        <Route path="/order-history" element={<OrderHistory orders={orders} />} />
+      </Routes>
+    </div>
   );
 }
 
 export default App;
+
+
+
+

@@ -21,17 +21,57 @@
 // export default Header;
 
 
+// import React from 'react';
+
+// const Header = ({ handleLogout, isLoggedIn }) => {
+//   return (
+//     <header className="App-header">
+//       <h1>Book-A-Meal</h1>
+//       {/* Display logout button if the user is logged in */}
+//       {isLoggedIn && (
+//         <button onClick={handleLogout} className="logout-button">
+//           Log Out
+//         </button>
+//         // STARTS HERE THE ADDED FEATURE
+//          ) ( 
+//     <>
+//       <Link to="/signup">
+//         <button>Sign Up</button>
+//       </Link>
+//       <Link to="/">
+//         <button>Login</button>
+//       </Link>
+//     </>
+
+
+
+//       )}
+//     </header>
+//   );
+// };
+
+// export default Header;
+
+
+
 import React from 'react';
+import { Link } from 'react-router-dom'; // <-- Add this import
 
 const Header = ({ handleLogout, isLoggedIn }) => {
   return (
-    <header className="App-header">
+    <header>
       <h1>Book-A-Meal</h1>
-      {/* Display logout button if the user is logged in */}
-      {isLoggedIn && (
-        <button onClick={handleLogout} className="logout-button">
-          Log Out
-        </button>
+      {isLoggedIn ? (
+        <button onClick={handleLogout}>Logout</button>
+      ) : (
+        <>
+          <Link to="/signup">
+            <button>Sign Up</button>
+          </Link>
+          <Link to="/">
+            <button>Login</button>
+          </Link>
+        </>
       )}
     </header>
   );
