@@ -3,7 +3,7 @@ import './About.css';
 
 const AboutUs = () => {
   return (
-    <div className="about">
+    <div className="about"> 
       <header>
         <h1>About Us</h1>
         <h2>Discover who we are and wha t makes us exceptional</h2>
@@ -13,7 +13,7 @@ const AboutUs = () => {
         {/* Who We Are */}
         <div className="about-block">
           <img
-            src="https://i.pinimg.com/736x/09/e8/ed/09e8eda853e4ed4b167c9024f288e5e9.jpg"
+            src="https://i.pinimg.com/236x/c0/42/b9/c042b98be24dbc5df09894270a7508c0.jpg"
             alt="Our Mission"
           />
           <div className="description">
@@ -26,10 +26,7 @@ const AboutUs = () => {
 
         {/* Our Mission */}
         <div className="about-block">
-          <img
-            src="https://via.placeholder.com/400"
-            alt="Our Mission"
-          />
+          
           <div className="description">
             <h2>Our Mission</h2>
             <p>
@@ -41,6 +38,10 @@ const AboutUs = () => {
               <li>Enhanced customer satisfaction</li>
             </ul>
           </div>
+          <img
+            src="https://i.pinimg.com/736x/65/46/8d/65468d94a94a535c71f3c18a563022aa.jpg"
+            alt="Our Mission"
+          />
         </div>
 
         {/* Explore More Button */}
