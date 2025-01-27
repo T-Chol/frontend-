@@ -22,13 +22,13 @@ const LandingPage = () => {
           alt="Welcome to Book A Meal"
           className="hero-image"
         />
-        <button className="book-now-btn" onClick={handleBookNow}>
-          Book Now
-        </button>
+        
       </div>
-
+      <button className="book-now-btn" onClick={handleBookNow}>
+        Book Now
+      </button>
       <div className="special-meals">
-        <h2>Special Meals of the Day</h2>
+        <h2>Discover Today's Special: A Unique Dining Experience With Fast Service</h2>
         <div className="meal-list">
           {specialMeals.map((meal) => (
             <div className="meal-card" key={meal.id}>
@@ -38,6 +38,35 @@ const LandingPage = () => {
           ))}
         </div>
       </div>
+      <section class="testimonials">
+        <h2>What Our Customers Are Saying</h2>
+        <div class="testimonial-container">
+          <div class="testimonial">
+            <p class="testimonial-text">"The best meal I've ever had! The flavors were exquisite and the service was top-notch!"</p>
+            <div class="rating">
+              <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="customer-name">Gavin Lee</p>
+          </div>
+
+          <div class="testimonial">
+            <p class="testimonial-text">"A fantastic experience! The ambiance and food were incredible. Highly recommend!"</p>
+            <div class="rating">
+              <span>⭐⭐⭐⭐⭐</span>
+            </div>
+            <p class="customer-name">Samantha L</p>
+          </div>
+
+          <div class="testimonial">
+            <p class="testimonial-text">"Delicious food and friendly staff. I'll definitely be coming back for more!"</p>
+            <div class="rating">
+              <span>⭐⭐⭐⭐</span>
+            </div>
+            <p class="customer-name">Jimmy Y</p>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };
