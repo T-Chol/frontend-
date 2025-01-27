@@ -15,13 +15,13 @@ import ChefDashboard from './components/ChefDashboard'; // Import the ChefDashbo
 import SpecialDetail from './components/SpecialDetail'; // Import SpecialDetail component for today's special
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login status
-  const [user, setUser] = useState(null); // Initialize as null, which will be set after login
-  const [meals, setMeals] = useState([]); // State to store fetched meal items
-  const [orders, setOrders] = useState([]); // State to store user's order list
-  const [foods, setFoods] = useState([]); // State to store foods added by the chef
-  const [specialOfTheDay, setSpecialOfTheDay] = useState(null); // State to store the day's special food
-  const [signedUpUser, setSignedUpUser] = useState(null); // State to store signed-up user credentials
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [user, setUser] = useState(null); 
+  const [meals, setMeals] = useState([]); 
+  const [orders, setOrders] = useState([]); 
+  const [foods, setFoods] = useState([]); 
+  const [specialOfTheDay, setSpecialOfTheDay] = useState(null); 
+  const [signedUpUser, setSignedUpUser] = useState(null); 
 
   const navigate = useNavigate(); // Initialize useNavigate hook
 
@@ -87,6 +87,8 @@ function App() {
       />
       <div className="container mt-4">
         <Routes>
+          <Route path="/" element={<LandingPage />} />
+
           <Route
             path="/home"
             element={isLoggedIn ? <Dashboard user={user} /> : <LandingPage />}
