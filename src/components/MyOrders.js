@@ -32,24 +32,26 @@
 // src/components/MyOrders.js
 import React from 'react';
 
-function MyOrders({ orders }) {
+const MyOrders = ({ orders }) => {
   return (
     <div className="container mt-4">
       <h2>My Orders</h2>
-      {orders.length === 0 ? (
-        <p>You have no orders yet.</p>
-      ) : (
+      {orders.length > 0 ? (
         <ul className="list-group">
-          {orders.map((order, index) => (
-            <li className="list-group-item" key={index}>
-              {order.name} - ${order.price} x {order.quantity}
+          {orders.map((order) => (
+            <li key={order.id} className="list-group-item">
+              <h5>{order.mealName}</h5>
+              <p>Price: ${order.price}</p>
+              <p>Date: {order.date}</p>
             </li>
           ))}
         </ul>
+      ) : (
+        <p>No orders found.</p>
       )}
     </div>
   );
-}
+};
 
 export default MyOrders;
 

@@ -18,7 +18,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [user, setUser] = useState(null); 
   const [meals, setMeals] = useState([]); 
-  const [orders, setOrders] = useState([]); 
+  const [orders, setOrders] = useState([]); // To manage orders
   const [foods, setFoods] = useState([]); 
   const [specialOfTheDay, setSpecialOfTheDay] = useState(null); 
   const [signedUpUser, setSignedUpUser] = useState(null); 
@@ -40,6 +40,21 @@ function App() {
     fetchMeals();
   }, []);
 
+  // Handle adding an item to the order
+  const handleAddToOrder = (meal) => {
+    const newOrder = {
+      id: orders.length + 1, // Generate a unique ID for the order
+      mealId: meal.id,
+      mealName: meal.name,
+      price: meal.price,
+      date: new Date().toISOString().split('T')[0], // Add today's date
+      status: 'Pending', // New order status
+      userId: user.id, // Linking order to the user
+    };
+    setOrders([...orders, newOrder]); // Add the new order to the orders state
+  };
+
+  // Handle login
   const handleLogin = (loginCredentials) => {
     console.log("Login attempt with:", loginCredentials); // Log login credentials
     console.log("Signed Up User:", signedUpUser); // Log the signed-up user data
@@ -56,7 +71,6 @@ function App() {
       alert("Invalid credentials. Please try again.");
     }
   };
-  
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -69,7 +83,6 @@ function App() {
     setUser({ ...newUser, role: 'user' }); // Set the logged-in user with role
     navigate("/login"); // Navigate to the login page after sign-up
   };
-  
 
   // Handle adding food to the list (for chefs)
   const handleAddFood = (food) => {
@@ -80,6 +93,13 @@ function App() {
   const handleSetSpecialOfTheDay = (foodId) => {
     const food = foods.find(f => f.id === foodId);
     setSpecialOfTheDay(food); // Set the selected food as the day's special
+  };
+
+  // Admin view of orders (to view and manage orders)
+  const handleManageOrders = () => {
+    // Admin can see all orders and change the status
+    console.log('Managing Orders:', orders);
+    // Admin logic here to update order status, delete orders, etc.
   };
 
   return (
@@ -93,7 +113,6 @@ function App() {
       <div className="container mt-4">
         <Routes>
           <Route path="/" element={<LandingPage />} />
-
           <Route
             path="/home"
             element={isLoggedIn ? <Dashboard user={user} /> : <LandingPage />}
@@ -101,22 +120,30 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/signup" element={<SignUp handleSignUp={handleSignUp} />} />
           <Route path="/login" element={<Login handleLogin={handleLogin} />} />
-          <Route path="/meal-list" element={<MealList meals={meals} />} />
+          <Route
+            path="/meal-list"
+            element={<MealList meals={meals} handleAddToOrder={handleAddToOrder} />}
+          />
           <Route path="/order-history" element={<OrderHistory orders={orders} />} />
-          <Route path="/my-orders" element={<MyOrders orders={orders} />} />
+          <Route path="/my-orders" element={<MyOrders orders={orders} user={user} />} />
           <Route path="/menu" element={<Menu />} />
-
           {/* Route for Special of the Day */}
           <Route
             path="/special/:id"
             element={<SpecialDetail meals={meals} />}
           />
-
           {/* Route for Chef's Dashboard */}
           {user?.role === 'chef' && (
             <Route
               path="/chef-dashboard"
               element={<ChefDashboard handleAddFood={handleAddFood} handleSetSpecialOfTheDay={handleSetSpecialOfTheDay} foods={foods} />}
+            />
+          )}
+          {/* Route for Admin to manage orders */}
+          {user?.role === 'admin' && (
+            <Route
+              path="/admin-dashboard"
+              element={<button onClick={handleManageOrders}>Manage Orders</button>} // Admin manage orders button
             />
           )}
         </Routes>
@@ -174,3 +201,4 @@ function App() {
 }
 
 export default App;
+
