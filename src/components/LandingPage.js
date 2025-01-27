@@ -38,6 +38,7 @@ const LandingPage = () => {
           ))}
         </div>
       </div>
+      <hr/>
       <section class="testimonials">
         <h2>What Our Customers Are Saying</h2>
         <div class="testimonial-container">
