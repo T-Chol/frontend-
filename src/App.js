@@ -41,6 +41,9 @@ function App() {
   }, []);
 
   const handleLogin = (loginCredentials) => {
+    console.log("Login attempt with:", loginCredentials); // Log login credentials
+    console.log("Signed Up User:", signedUpUser); // Log the signed-up user data
+  
     // Check if login credentials match the signed-up credentials
     if (
       loginCredentials.username === signedUpUser?.username &&
@@ -53,6 +56,7 @@ function App() {
       alert("Invalid credentials. Please try again.");
     }
   };
+  
 
   const handleLogout = () => {
     setIsLoggedIn(false);
@@ -60,11 +64,12 @@ function App() {
   };
 
   const handleSignUp = (newUser) => {
-    setSignedUpUser(newUser); // Store signed-up user credentials
+    setSignedUpUser(newUser);  // Ensure this stores the new user properly
     setIsLoggedIn(true);
-    setUser({ ...newUser, role: 'user' }); // Simulate a new user signup
+    setUser({ ...newUser, role: 'user' }); // Set the logged-in user with role
     navigate("/login"); // Navigate to the login page after sign-up
   };
+  
 
   // Handle adding food to the list (for chefs)
   const handleAddFood = (food) => {

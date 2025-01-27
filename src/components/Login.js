@@ -7,8 +7,9 @@ const Login = ({ handleLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin({ name: username, role: 'user' });
+    handleLogin({ username, password });  // Use 'username' and 'password' instead of 'name' and 'role'
   };
+  
 
   return (
     <div className="login-container">

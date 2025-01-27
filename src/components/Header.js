@@ -41,9 +41,6 @@ function Header({ handleLogout, isLoggedIn }) {
               <Link className="nav-link" to="/team">Team</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/career">Career</Link>
-            </li>
-            <li className="nav-item">
               <Link className="nav-link" to="/specials">Today's Specials</Link>
             </li>
           </ul>
