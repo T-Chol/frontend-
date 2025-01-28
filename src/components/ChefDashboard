@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function ChefDashboard({ handleAddFood, handleSetSpecialOfTheDay, foods }) {
+function ChefDashboard({ handleAddFood, handleSetSpecialOfTheDay, foods, orders }) {
   const [newFood, setNewFood] = useState({
     name: '',
     description: '',
@@ -8,7 +8,17 @@ function ChefDashboard({ handleAddFood, handleSetSpecialOfTheDay, foods }) {
     price: '',
   });
   const [selectedSpecial, setSelectedSpecial] = useState('');
+  const [specialOfTheDay, setSpecialOfTheDay] = useState(null);
 
+  // Calculate total money for the day
+  const calculateTotalMoney = () => {
+    const today = new Date().toISOString().split('T')[0]; // Get today's date
+    const todaysOrders = orders.filter(order => order.date === today);
+    const totalMoney = todaysOrders.reduce((total, order) => total + order.price, 0);
+    return totalMoney;
+  };
+
+  // Handle food input change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewFood({
@@ -17,9 +27,10 @@ function ChefDashboard({ handleAddFood, handleSetSpecialOfTheDay, foods }) {
     });
   };
 
+  // Handle submitting new food
   const handleFoodSubmit = (e) => {
     e.preventDefault();
-    const food = { ...newFood, id: Date.now() }; // Use a unique ID (timestamp for simplicity)
+    const food = { ...newFood, id: Date.now() }; // Generate a unique ID (timestamp for simplicity)
     handleAddFood(food); // Pass the food data to the parent component (App.js)
     setNewFood({
       name: '',
@@ -29,14 +40,22 @@ function ChefDashboard({ handleAddFood, handleSetSpecialOfTheDay, foods }) {
     });
   };
 
+  // Handle setting the special of the day
   const handleSpecialSubmit = (e) => {
     e.preventDefault();
-    handleSetSpecialOfTheDay(selectedSpecial); // Pass the selected food ID to set it as special of the day
+    const selectedFood = foods.find(food => food.id === parseInt(selectedSpecial));
+    setSpecialOfTheDay(selectedFood);
+    handleSetSpecialOfTheDay(selectedFood); // Pass the selected food to set it as special of the day
   };
 
   return (
     <div className="container mt-4">
       <h2>Chef's Dashboard</h2>
+
+      {/* Total Money for Today */}
+      <div className="mt-4">
+        <h4>Total Money for Today: ${calculateTotalMoney().toFixed(2)}</h4>
+      </div>
 
       {/* Add Food Form */}
       <h3>Add a New Food Item</h3>
@@ -107,7 +126,8 @@ function ChefDashboard({ handleAddFood, handleSetSpecialOfTheDay, foods }) {
       {specialOfTheDay && (
         <div className="mt-4">
           <h4>Today's Special:</h4>
-          {specialOfTheDay.name}
+          <p>{specialOfTheDay.name}</p>
+          <p>{specialOfTheDay.description}</p>
         </div>
       )}
     </div>
@@ -115,3 +135,4 @@ function ChefDashboard({ handleAddFood, handleSetSpecialOfTheDay, foods }) {
 }
 
 export default ChefDashboard;
+

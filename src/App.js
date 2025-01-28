@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
@@ -38,7 +39,7 @@ function App() {
       }
     };
     fetchMeals();
-  }, []);
+  }, []); 
 
   // Handle adding an item to the order
   const handleAddToOrder = (meal) => {
@@ -58,7 +59,7 @@ function App() {
   const handleLogin = (loginCredentials) => {
     console.log("Login attempt with:", loginCredentials); // Log login credentials
     console.log("Signed Up User:", signedUpUser); // Log the signed-up user data
-  
+    
     // Check if login credentials match the signed-up credentials
     if (
       loginCredentials.username === signedUpUser?.username &&
@@ -132,13 +133,22 @@ function App() {
             path="/special/:id"
             element={<SpecialDetail meals={meals} />}
           />
-          {/* Route for Chef's Dashboard */}
+          
+          {/* Conditionally Render Chef's Dashboard based on Role */}
           {user?.role === 'chef' && (
             <Route
               path="/chef-dashboard"
-              element={<ChefDashboard handleAddFood={handleAddFood} handleSetSpecialOfTheDay={handleSetSpecialOfTheDay} foods={foods} />}
+              element={
+                <ChefDashboard
+                  handleAddFood={handleAddFood}
+                  handleSetSpecialOfTheDay={handleSetSpecialOfTheDay}
+                  foods={foods}
+                  orders={orders} // Pass orders to ChefDashboard
+                />
+              }
             />
           )}
+          
           {/* Route for Admin to manage orders */}
           {user?.role === 'admin' && (
             <Route
@@ -201,4 +211,5 @@ function App() {
 }
 
 export default App;
+
 

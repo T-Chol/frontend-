@@ -5,7 +5,8 @@ const SignUp = ({ handleSignUp }) => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    password: ''
+    password: '',
+    role: 'user' // Default role is 'user'
   });
 
   const handleChange = (e) => {
@@ -18,7 +19,7 @@ const SignUp = ({ handleSignUp }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Simulate a successful sign-up
+    // Pass the form data (including role) to the handleSignUp function
     handleSignUp(formData);
   };
 
@@ -62,16 +63,30 @@ const SignUp = ({ handleSignUp }) => {
             required
           />
         </div>
+        <div>
+          <label htmlFor="role">Role:</label>
+          <select
+            id="role"
+            name="role"
+            value={formData.role}
+            onChange={handleChange}
+            required
+          >
+            <option value="user">User</option>
+            <option value="chef">Chef</option>
+          </select>
+        </div>
         <button type="submit">Sign Up</button>
       
-      <div className="signup-footer">
-        <p>
-          Already have an account? <a href="/login">Login</a>
-        </p>
-      </div>
+        <div className="signup-footer">
+          <p>
+            Already have an account? <a href="/login">Login</a>
+          </p>
+        </div>
       </form>
     </div>
   );
 };
 
 export default SignUp;
+
